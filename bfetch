@@ -18,7 +18,7 @@ fi
 #Beta
 if [[ "$Comm1" == "beta" ]]
 then 
-echo "This will be added in beta 0.02 "
+echo "This will be added in beta 0.03 "
 Comm3=1
 else
 Comm3=0
