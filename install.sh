@@ -1,5 +1,5 @@
 #/bin/bash
 sudo chmod +x bfetch
-sudo mv bfetch /usr/bin
+sudo mv bfetch /bin
 echo "Remeber to install lsb-release"
 echo "Installed :) "
