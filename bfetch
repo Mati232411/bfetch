@@ -38,6 +38,7 @@ echo
 echo
 echo OS
 lsb_release -i | cut -f 2-
+echo
 echo "Kernel -->"
 uname -a
 echo
