@@ -8,3 +8,4 @@ I am still learning how to get bfetch --(something) if you would like to help me
 How to install ?
 Copy it to your bin folder like /bin /usr/bin.
 Thats all :)
+Or use install.sh
