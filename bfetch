@@ -11,6 +11,7 @@ then
 echo "This is help of bfetch"
 echo "If you type 'bfetch beta' you will get beta logos not all are present get updated on my github :)"
 echo "If you type 'bfetch short' you will get only cpu mem and disk and nothing else in simple line "
+echo "If you want to update then type 'bfetch update' and go with instructions"
 echo "Thanks for using bfetch" 
 fi
 
@@ -24,11 +25,12 @@ Comm3=0
 fi
 
 #Short 
-if [[ "Comm1" == "short" ]]
+if [[ "Comm1" == "update" ]]
 then
-exec uname -a
-exec lscpu | grep "Intel(R)"
-exec df | grep /dev
+cd /tmp
+git clone https://github.com/Mati232411/bfetch.git
+echo "now type 'sudo rm -rf /bin/bfetch'"
+echo "And next run install.sh"
 fi
 
 #Real Code
