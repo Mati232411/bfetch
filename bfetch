@@ -47,4 +47,3 @@ free -h | tr -s ' ' | sed '/^Mem/!d' | cut -d" " -f2
 echo
 echo "${bold}DISK -->${normal}"
 df -h --exclude={devtmpfs,tmpfs}
-echo
