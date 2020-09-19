@@ -12,6 +12,7 @@ if  [[ "$1"  ==  "help" ]]
 then
 echo '''Usage: bfetch [options]
 options:
+  beta: Show GPU
   short: Display only CPU, Memory and Disk
   update: Update bfetch'''
 exit 0
