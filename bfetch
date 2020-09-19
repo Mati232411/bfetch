@@ -1,22 +1,22 @@
-#/bin/bash
+#/usr/bin/env bash
 
-#Switch Settings
-Comm1=$1
-Comm3=0
+bold=$(tput bold)
+normal=$(tput sgr0)
 
 #Start of real code
 #Help
-if  [[ "$Comm1"  ==  "help" ]]
+if  [[ "$1"  ==  "help" ]]
 then
-echo "This is help of bfetch"
-echo "If you type 'bfetch beta' you will get beta logos not all are present get updated on my github :)"
-echo "If you type 'bfetch short' you will get only cpu mem and disk and nothing else in simple line "
-echo "If you want to update then type 'bfetch update' and go with instructions"
-echo "Thanks for using bfetch" 
+echo '''Usage: bfetch [options]
+options:
+  beta: Use beta logos
+  short: Display only CPU, Memory and Disk
+  update: Update bfetch'''
+exit 0
 fi
 
 #Beta
-if [[ "$Comm1" == "beta" ]]
+if [[ "$1" == "beta" ]]
 then 
 echo "This will be added in beta 0.03 "
 Comm3=1
@@ -24,30 +24,29 @@ else
 Comm3=0
 fi
 
-#Short 
-if [[ "Comm1" == "update" ]]
+#Update
+if [[ "$1" == "update" ]]
 then
 cd /tmp
 git clone https://github.com/Mati232411/bfetch.git
-echo "now type 'sudo rm -rf /bin/bfetch'"
-echo "And next run install.sh"
+echo "Run the following command to update bfetch:"
+echo "${bold}cd /tmp/bfetch && sudo make install${normal}"
+exit 0
 fi
 
 #Real Code
-echo
-echo
-echo OS
+echo "${bold}OS -->${normal}"
 lsb_release -i | cut -f 2-
 echo
-echo "Kernel -->"
-uname -a
+echo "${bold}Kernel -->${normal}"
+uname -snrmv
 echo
-echo "CPU -->"
-lscpu | grep "Intel(R)"
+echo "${bold}CPU -->${normal}"
+lscpu | grep "Model name:" | sed -r 's/Model name:\s{1,}//g'
 echo
-echo "Memory -->"
-cat /proc/meminfo | grep MemTotal 
+echo "${bold}Memory -->${normal}"
+free -h | tr -s ' ' | sed '/^Mem/!d' | cut -d" " -f2
 echo
-echo "DISK -->"
-df | grep /dev
-
+echo "${bold}DISK -->${normal}"
+df -h --exclude={devtmpfs,tmpfs}
+echo
