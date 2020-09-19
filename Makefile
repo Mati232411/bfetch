@@ -6,6 +6,7 @@ install:
         cp -r Logos /etc/Bfetch/
 uninstall:
         rm -f ${DESTDIR}/${PREFIX}/bin/bfetch
+        rm -rf /etc/Bfetch
 
 
 
