@@ -2,12 +2,12 @@
 My first step into programming world.
 So i have created this program which is like neofetch but fast and simple/
 Logos are still work in progress but i am going to finally finish them right now there is only arch logo in it but it looks bad so to be done.
-I have creted some simple switches like bfetch help bfetch update you can try tehm yourself and suggest others.
+I have created some simple switches like bfetch help bfetch update you can try them yourself and suggest others.
 First Logo yay
 
-
-
 How to install ?
-Copy it to your bin folder like /bin.
-Thats all :)
-Or use install.sh
+
+`make install` is used for installing bfetch, the `DESTDIR` and `PREFIX` variables can be specified aswell.
+
+## Screenshots
+![ScreenShot](https://raw.githubusercontent.com/git-bruh/bfetch/master/How%20it%20looks.png)
