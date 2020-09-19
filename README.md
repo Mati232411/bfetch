@@ -15,4 +15,4 @@ How to install ?
 `make install` is used for installing bfetch, the `DESTDIR` and `PREFIX` variables can be specified aswell.
 
 ## Screenshots
-![ScreenShot](https://raw.githubusercontent.com/git-bruh/bfetch/master/How%20it%20looks.png)
+![ScreenShot](https://raw.githubusercontent.com/Mati232411/bfetch/master/How%20it%20looks.png)
