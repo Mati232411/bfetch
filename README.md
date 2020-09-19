@@ -5,6 +5,10 @@ Logos are still work in progress but i am going to finally finish them right now
 I have created some simple switches like bfetch help bfetch update you can try them yourself and suggest others.
 First Logo yay
 
+Available Logos
+Arch
+Debian
+
 How to install ?
 
 `make install` is used for installing bfetch, the `DESTDIR` and `PREFIX` variables can be specified aswell.
