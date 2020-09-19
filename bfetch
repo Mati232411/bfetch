@@ -19,9 +19,7 @@ fi
 if [[ "$1" == "beta" ]]
 then 
 echo "This will be added in beta 0.03 "
-Comm3=1
-else
-Comm3=0
+exit 0
 fi
 
 #Update
