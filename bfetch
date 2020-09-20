@@ -21,11 +21,11 @@ fi
 #Logo :)
 if [[ "$logo" == "Arch" ]]
 then
-cat /etc/Bfetch/Logos/$logo
+cat /etc/bfetch/Logos/$logo
 fi
 if [[ "$logo" == "Debian" ]]
 then
-cat /etc/Bfetch/Logos/$logo
+cat /etc/bfetch/Logos/$logo
 fi
 
 #Update
