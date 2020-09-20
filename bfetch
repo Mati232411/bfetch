@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 bold=$(tput bold)
 normal=$(tput sgr0)
@@ -10,28 +10,28 @@ logo=$(lsb_release -i | cut -f 2-)
 #Help
 if  [[ "$1"  ==  "help" ]]
 then
-echo '''Usage: bfetch [options]
+echo 'Usage: bfetch [options]
 options:
   beta: Show GPU
   short: Display only CPU, Memory and Disk
-  update: Update bfetch'''
+  update: Update bfetch'
 exit 0
 fi
 
 #Logo :)
 if [[ "$logo" == "Arch" ]]
 then
-cat /etc/bfetch/Logos/$logo
+cat /etc/bfetch/Logos/"$logo"
 fi
 if [[ "$logo" == "Debian" ]]
 then
-cat /etc/bfetch/Logos/$logo
+cat /etc/bfetch/Logos/"$logo"
 fi
 
 #Update
 if [[ "$1" == "update" ]]
 then
-cd /tmp
+cd /tmp || exit
 git clone https://github.com/Mati232411/bfetch.git
 echo "Run the following command to update bfetch:"
 echo "${bold}cd /tmp/bfetch && sudo make install${normal}"
