@@ -54,7 +54,7 @@ echo
 if [[ "$1" == "beta" ]]
 then
 echo GPU
-lspci | grep "VGA compatible controller" sed -r 's/Model name:\s1{1,}//g'
+lspci | grep "VGA compatible controller" | sed -r 's/Model name:\s1{1,}//g'
 echo
 fi
 
