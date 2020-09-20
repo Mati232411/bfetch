@@ -39,6 +39,7 @@ exit 0
 fi
 
 #Real Code
+echo
 echo "${bold}OS -->${normal}"
 lsb_release -i | cut -f 2-
 echo
