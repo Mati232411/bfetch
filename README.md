@@ -16,3 +16,7 @@ How to install ?
 
 ## Screenshots
 ![ScreenShot](https://raw.githubusercontent.com/Mati232411/bfetch/master/How%20it%20looks.png)
+
+
+## New Things
+Mac OS support coming soon !!
