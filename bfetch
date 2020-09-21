@@ -2,9 +2,14 @@
 
 bold=$(tput bold)
 normal=$(tput sgr0)
-logo=$(lsb_release -i | cut -f 2-)
 
-
+#Variables
+memory=$(sysctl -n hw.memsize 2>/dev/null)
+#if logo=$(lsb_release -i | cut -f 2- ) 2>/dev/null; then
+#echo Yes
+#else
+#echo No
+#fi
 
 #Start of real code
 #Help
@@ -19,14 +24,14 @@ exit 0
 fi
 
 #Logo :)
-if [[ "$logo" == "Arch" ]]
-then
-cat /etc/bfetch/Logos/"$logo"
-fi
-if [[ "$logo" == "Debian" ]]
-then
-cat /etc/bfetch/Logos/"$logo"
-fi
+#if [[ "$logo" == "Arch" ]]
+#then
+#cat /etc/bfetch/Logos/"$logo"
+#fi
+#if [[ "$logo" == "Debian" ]]
+#then
+#cat /etc/bfetch/Logos/"$logo"
+#fi
 
 #Update
 if [[ "$1" == "update" ]]
@@ -41,13 +46,22 @@ fi
 #Real Code
 echo
 echo "${bold}OS -->${normal}"
+if OS=$(sw_vers -productVersion 2>/dev/null); then
+echo Mac OS $OS
+else
 lsb_release -i | cut -f 2-
+fi
 echo
 echo "${bold}Kernel -->${normal}"
 uname -snrmv
 echo
 echo "${bold}CPU -->${normal}"
+if CPU=$(sysctl -a 2>/dev/null | grep machdep.cpu.brand_string );
+then
+echo $CPU | sed -e "s/^machdep.cpu.brand_string: //"
+else
 lscpu | grep "Model name:" | sed -r 's/Model name:\s{1,}//g'
+fi
 echo
 
 #GPU Beta
@@ -59,9 +73,13 @@ echo
 fi
 
 echo "${bold}Memory -->${normal}"
+if memory=$(sysctl -n hw.memsize 2>/dev/null);
+then
+expr $memory / 1048576
+else
 free -h | tr -s ' ' | sed '/^Mem/!d' | cut -d" " -f2
+fi
+
 echo
 echo "${bold}DISK -->${normal}"
-df -h --exclude={devtmpfs,tmpfs}
-
-
+df -h --exclude={devtmpfs,tmpfs} 2>/dev/null
