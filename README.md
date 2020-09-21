@@ -20,3 +20,6 @@ How to install ?
 
 ## New Things
 Mac OS support and Mac Logo is here !!
+
+## Coming UP
+Legacy Mac (PowerPC) Support
