@@ -56,9 +56,9 @@ echo "${bold}Kernel -->${normal}"
 uname -snrmv
 echo
 echo "${bold}CPU -->${normal}"
-if CPU=$(sysctl -a 2>/dev/null | grep machdep.cpu.brand_string );
+if CPU=$(system_profiler 2>/dev/null | grep Processor Name: );
 then
-echo $CPU | sed -e "s/^machdep.cpu.brand_string: //"
+echo $CPU | sed -e "s/^Processor Name: //"
 else
 lscpu | grep "Model name:" | sed -r 's/Model name:\s{1,}//g'
 fi
