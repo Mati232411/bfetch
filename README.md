@@ -19,4 +19,4 @@ How to install ?
 
 
 ## New Things
-Mac OS support coming soon !!
+Mac OS support and Mac Logo is here !!
