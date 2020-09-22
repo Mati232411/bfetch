@@ -1,0 +1,88 @@
+#/usr/bin/env bash
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+#Variables
+memory=$(sysctl -n hw.memsize 2>/dev/null)
+if lsb_release 2>/dev/null; then
+logo=$(lsb_release -i 2>/dev/null | cut -f 2-)
+else
+logo="Mac"
+fi
+
+#Start of real code
+#Help
+if  [[ "$1"  ==  "help" ]]
+then
+echo '''Usage: bfetch [options]
+options:
+  beta: Show GPU
+  short: Display only CPU, Memory and Disk
+  update: Update bfetch'''
+exit 0
+fi
+
+#Logo :)
+if [[ "$logo" == "Arch" ]]
+then
+cat /etc/bfetch/Logos/$logo
+fi
+if [[ "$logo" == "Debian" ]]
+then
+cat /etc/bfetch/Logos/$logo
+fi
+if [[ "$logo" == "Mac" ]]
+then
+  cat /etc/bfetch/Logos/"$logo"
+fi
+
+#Update
+if [[ "$1" == "update" ]]
+then
+cd /tmp
+git clone https://github.com/Mati232411/bfetch.git
+echo "Run the following command to update bfetch:"
+echo "${bold}cd /tmp/bfetch && sudo make install${normal}"
+exit 0
+fi
+
+#Real Code
+echo
+echo "${bold}OS -->${normal}"
+if OS=$(sw_vers -productVersion 2>/dev/null); then
+echo Mac OS $OS
+else
+lsb_release -i | cut -f 2-
+fi
+echo
+echo "${bold}Kernel -->${normal}"
+uname -snrmv
+echo
+echo "${bold}CPU -->${normal}"
+if CPU=$(sysctl -a 2>/dev/null | grep machdep.cpu.brand_string );
+then
+echo $CPU | sed -e "s/^machdep.cpu.brand_string: //"
+else
+lscpu | grep "Model name:" | sed -r 's/Model name:\s{1,}//g'
+fi
+echo
+echo "${bold}GPU -->${normal}"
+if GPU=$(lspci 2> /dev/null | grep "VGA compatible controller" );
+then
+echo $GPU | sed -r 's/Model name:\s1{1,}//g'
+else
+system_profiler SPDisplaysDataType | grep "Chipset Model:" | sed -e "s/^      //" | sed -e "s/^Chipset Model: //"
+fi
+echo
+echo "${bold}Memory -->${normal}"
+if memory=$(sysctl -n hw.memsize 2>/dev/null);
+then
+expr $memory / 1048576
+else
+free -h | tr -s ' ' | sed '/^Mem/!d' | cut -d" " -f2
+fi
+
+echo
+echo "${bold}DISK -->${normal}"
+df -h --exclude={devtmpfs,tmpfs} 2>/dev/null
