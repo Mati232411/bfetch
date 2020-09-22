@@ -19,7 +19,9 @@ How to install ?
 
 
 ## New Things
-Mac OS support and Mac Logo is here !!
+GPU support Mac and Linux
+PowerPC support
 
 ## Coming UP
-Legacy Mac (PowerPC) Support
+FreeBSD Logo
+Maybe better logo placment
