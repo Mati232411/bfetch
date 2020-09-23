@@ -25,3 +25,4 @@ PowerPC support
 ## Coming UP
 FreeBSD Logo
 Maybe better logo placment
+Linux GPU Fix
