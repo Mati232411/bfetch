@@ -21,8 +21,9 @@ How to install ?
 ## New Things
 GPU support Mac and Linux
 PowerPC support
+Fixed GPU support and CPU layout
 
 ## Coming UP
 FreeBSD Logo
 Maybe better logo placment
-Linux GPU Fix
+
