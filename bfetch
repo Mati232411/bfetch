@@ -77,7 +77,7 @@ fi
 if CPU=$(sysctl -a 2>/dev/null | grep machdep.cpu.brand_string ); then
   CPU=$(sysctl -a 2>/dev/null | grep machdep.cpu.brand_string )
 else
-  system_profiler 2>/dev/null | grep "Processor Name:" | sed -e "s/^  Processor Name://"
+  system_profiler 2>/dev/null | grep "Processor Name:" | sed -e "s/^      Processor Name: //"
 fi
 
 
