@@ -19,11 +19,9 @@ How to install ?
 
 
 ## New Things
-GPU support Mac and Linux
-PowerPC support
-Fixed GPU support and CPU layout
+Fixed GPU support and CPU layout and Disk on Mac OS.
+PowerPC support near full.
 
 ## Coming UP
-FreeBSD Logo
-Maybe better logo placment
-
+Fix for Debian Logo.
+Making deb files
