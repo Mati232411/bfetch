@@ -1,0 +1,65 @@
+#!/bin/bash
+
+#User
+user=$(whoami)
+
+#Kernel
+kernel=$(uname -r)
+
+#OS
+osx=$(sw_vers -productVersion 2>/dev/null)
+if lsb_release &> /dev/null; then
+  os=$(lsb_release -i 2>/dev/null | cut -f 2-)
+elif ! command -v sysctl &> /dev/null; then
+  echo -e "Mac OS $osx"
+fi
+
+#Hostname
+hostname=$(hostname)
+
+#Host
+if ! command -v sysctl &> /dev/null; then
+host=$(echo "Sorry Linux Support comming soon :(")
+else
+host=$(sysctl -a 2>/dev/null  | grep hw.model | sed -e "s/^hw.model = //")
+fi
+
+
+#CPU
+if  sysctl &> /dev/null; then
+cpu=$(sysctl -a 2>/dev/null | grep machdep.cpu.brand_string )
+elif lscpu >>/dev/null; then
+model=$(awk -F':' '/^model name/ {split($2, A, " @"); print A[1]; exit}' /proc/cpuinfo)
+cores=$(nproc)
+else
+  CPU=$(system_profiler 2>/dev/null | grep "Processor Name:" | sed -e "s/^      //" | sed -e "s/^Chipset Model: //")
+          if [[ "$CPU" == *"G3"* ]]; then
+          model=$(echo "PowerPC G3")
+          elif [[ "$CPU" == *"G4"* ]]; then
+          model=$(echo "PowerPC G4")
+          elif [[ "$CPU" == *"G5"* ]]; then
+          model=$(echo "PowerPC G5")
+          fi
+fi
+
+
+#Memory
+if sysctl &> /dev/null; then
+  memory=$(sysctl -n hw.memsize 2>/dev/null)
+else
+  memory=$(free -h | tr -s ' ' | sed '/^Mem/!d' | cut -d" " -f2)
+fi
+
+
+
+
+
+
+echo -e "		$user@$hostname"
+echo -e "		..............."
+echo -e ""
+echo -e "		OS: $os"
+echo -e "		Host: $host"
+echo -e "		Kernel: $kernel"
+echo -e "		CPU: $model ($cores)"
+echo -e "		Mem: $memory"
