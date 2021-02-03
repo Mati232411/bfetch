@@ -5,9 +5,6 @@ Logos are still work in progress but i am going to finally finish them right now
 I have created some simple switches like bfetch help bfetch update you can try them yourself and suggest others.
 First Logo yay
 
-Available Logos -
-Arch
-Debian
 
 
 How to install ?
@@ -19,9 +16,7 @@ How to install ?
 
 
 ## New Things
-Fixed GPU support and CPU layout and Disk on Mac OS.
-PowerPC support near full.
+New design do not look at screenshot.
 
 ## Coming UP
-Fix for Debian Logo.
-Making deb files
+Support for Logos in ver 2.0
