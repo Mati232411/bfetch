@@ -10,15 +10,17 @@ kernel=$(uname -r)
 osx=$(sw_vers -productVersion 2>/dev/null)
 if lsb_release &> /dev/null; then
   os=$(lsb_release -i 2>/dev/null | cut -f 2-)
+  ost=(1)
 elif ! command -v sysctl &> /dev/null; then
-  echo -e "Mac OS $osx"
+  os=$(echo -e "Mac OS $osx")
+  ost=(1)
 fi
 
 #Hostname
 hostname=$(hostname)
 
 #Host
-if ! command -v sysctl &> /dev/null; then
+if [[ "$ost" == "0" ]]; then
 host=$(echo "Sorry Linux Support comming soon :(")
 else
 host=$(sysctl -a 2>/dev/null  | grep hw.model | sed -e "s/^hw.model = //")
