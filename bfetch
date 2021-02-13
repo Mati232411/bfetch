@@ -10,7 +10,7 @@ kernel=$(uname -r)
 osx=$(sw_vers -productVersion 2>/dev/null)
 if lsb_release &> /dev/null; then
   os=$(lsb_release -i 2>/dev/null | cut -f 2-)
-  ost=(1)
+  ost=(0)
 elif ! command -v sysctl &> /dev/null; then
   os=$(echo -e "Mac OS $osx")
   ost=(1)
